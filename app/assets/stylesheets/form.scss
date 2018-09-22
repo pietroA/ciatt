@@ -1,0 +1,30 @@
+.message-form{
+    position: fixed;
+    bottom: 0;
+}
+.custom-button {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        padding: 2px;
+        text-align: center;
+        margin-left: 2px;
+        border: 1px solid rgba(50, 75, 150, 0.7);
+        border-radius: 7px;
+        background-color: rgba(50, 75, 150, 0.3);
+        color: darkblue;
+        font-weight: bold;
+}
+
+.message-body{
+        display: block;
+        float: left;
+        border-radius: 7px; 
+        border: 1px solid rgba(50, 75, 150, 0.7);
+        background-color: rgba(150, 175, 250, 0.3);
+        word-spacing: 2pt;
+}
+
+.message-body:focus{
+        outline: none;
+}

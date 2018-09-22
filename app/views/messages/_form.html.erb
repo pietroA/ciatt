@@ -1,0 +1,10 @@
+<div class="horizontal-form message-form" id="chat-form-<%= @chat.id %>">
+  <textarea class="message-body"
+            id="message-body-<%=@chat.id %>"
+            rows="1"
+            cols="25"
+            onkeyup="checkMessage(event);"></textarea>
+  <a href="" class="custom-button" onclick="SendMessage(event, this);" data-chat="<%=@chat.id%>">
+    <i class="fa fa-angle-double-right"></i>
+  </a>
+</div>

@@ -1,0 +1,13 @@
+<div class="messages-panel" id="messages-panel-<%= @chat.id %>">
+  <div class="messages-box" id="messages-box-<%= @chat.id %>">
+    <%= render @chat.messages.all %>
+  </div>
+  <%= render 'messages/form' %>
+</div>
+
+<script>
+$(function(){
+  var mb = document.getElementById("messages-box-<%= @chat.id %>");
+  mb.scrollTo(0, mb.scrollHeight);
+});
+</script>
