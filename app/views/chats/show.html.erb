@@ -1,10 +1,15 @@
   <!-- Nav tabs -->
-  <ul class="nav nav-pills" role="tablist">
+<nav>
+  <ul class="menu-bar" role="tablist">
     <li role="presentation" class="active">
       <a>Ciatt con <%= @user.name %></a>
     </li>
+    <li role="presentation">
+      <a href="<%= root_url %>"><i class="fa fa-home"></i></a>
+    </li>
     <li role="presentation"><%= link_to '', logout_path, class: "fa fa-sign-out", method: :delete %></a></li>
   </ul>
+</nav>
 
 <div class="messages-panel" id="messages-panel-<%= @chat.id %>">
   <div class="messages-box" id="messages-box-<%= @chat.id %>">

@@ -12,26 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <label for="user_name">Nome</label>
     <%= form.text_field :name, id: :user_name %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
+    <label for="user_email">Email</label>
     <%= form.email_field :email, id: :user_email %>
   </div>
 
   <div class="field">
-    <%= form.label :password %>
+    <label for="user_password">Password (minimo 8 caratteri)</label>
     <%= form.password_field :password, id: :user_password %>
   </div>
 
   <div class="field">
-    <%= form.label :password_confirmation  %>
+    <label for="user_password_confirmation">Conderma Password</label>
     <%= form.password_field :password_confirmation , id: :user_password_confirmation %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Salva" %>
   </div>
 <% end %>

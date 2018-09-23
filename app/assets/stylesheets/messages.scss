@@ -2,8 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .messages-box {
-    max-height: 570px;
+    max-height: 550px;
     overflow-y: scroll;
+    margin-bottom: 30px;
 }
 
 .message {
@@ -26,4 +27,36 @@
 }
 .message-div{
     clear: both;
+}
+.messages-panel{
+    margin-top: 45px; 
+}
+.message-form {
+    background: white;
+    width: 100%;   
+    border-top: 1px solid lightgrey;
+    padding-top: 5px;
+}
+
+@media screen and (max-height: 520px) {
+    .messages-box {
+        max-height: 400px;
+        overflow-y: scroll;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-height: 420px) {
+    .messages-box {
+        max-height: 300px;
+        overflow-y: scroll;
+        margin-bottom: 30px;
+    }
+}
+@media screen and (max-height: 320px) {
+    .messages-box {
+        max-height: 200px;
+        overflow-y: scroll;
+        margin-bottom: 30px;
+    }
 }
