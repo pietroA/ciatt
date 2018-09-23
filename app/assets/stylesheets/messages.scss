@@ -29,11 +29,14 @@
     clear: both;
 }
 .messages-panel{
-    margin-top: 45px; 
+    margin: auto;
+    margin-top: 45px;
+    max-width: 500px;
 }
 .message-form {
     background: white;
     width: 100%;   
+    max-width: 500px;
     border-top: 1px solid lightgrey;
     padding-top: 5px;
 }

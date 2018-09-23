@@ -4,9 +4,10 @@
 }
 .custom-button {
         display: inline-block;
-        width: 25px;
-        height: 25px;
-        padding: 2px;
+        width: 30px;
+        height: 30px;
+        padding: 3px;
+        font-size: 21px;
         text-align: center;
         margin-left: 2px;
         border: 1px solid rgba(50, 75, 150, 0.7);
@@ -23,6 +24,8 @@
         border: 1px solid rgba(50, 75, 150, 0.7);
         background-color: rgba(150, 175, 250, 0.3);
         word-spacing: 2pt;
+        font-size: 15px;
+        padding: 6px;
 }
 
 .message-body:focus{
