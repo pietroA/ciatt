@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:3fdb14f1db9f0e8b6347042a2e8cbfba@soapfish.redistogo.com:10094/
   channel_prefix: ciatt_production
