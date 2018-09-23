@@ -1,5 +1,6 @@
 class ChatsController < ApplicationController
   before_action :set_chat, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:show, :edit, :update, :destroy]
 
   # GET /chats
   # GET /chats.json
@@ -10,6 +11,8 @@ class ChatsController < ApplicationController
   # GET /chats/1
   # GET /chats/1.json
   def show
+    chat_user = @chat.chat_users.where.not(user_id: current_user.id).first 
+    @user = chat_user.user
   end
 
   # GET /chats/new
@@ -70,5 +73,11 @@ class ChatsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def chat_params
       params.fetch(:chat, {})
+    end
+    
+    def check_user
+        unless @chat.chat_users.find_by(user_id: current_user.id)
+          redirect_to root_url
+        end
     end
 end

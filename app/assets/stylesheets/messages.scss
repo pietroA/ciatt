@@ -5,3 +5,25 @@
     max-height: 570px;
     overflow-y: scroll;
 }
+
+.message {
+    text-align: justify;
+    font-size: 10pt;
+    border: 2px solid coral;
+    border-radius: 5px 20px 20px 5px;
+    border-left-width: 10px;
+    width: auto;
+    float: left;
+}
+
+.message.self{
+    border: 2px solid coral;
+    border-radius: 20px 5px 5px 20px;
+    border-left-width: 2px;
+    border-right-width: 10px;
+    border-color: cornflowerblue;
+    float: right;
+}
+.message-div{
+    clear: both;
+}

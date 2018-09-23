@@ -2,8 +2,8 @@ function SendMessage(e, element){
     e.preventDefault();
     var chat_id = element.dataset.chat;
 
-    var message_body = document.getElementById('message-body-'+chat_id).value;
-    
+    var message = document.getElementById('message-body-'+chat_id);
+    var message_body = message.value
     $.ajax({
         url: '/api/messages/',
         type: 'POST',
@@ -13,7 +13,10 @@ function SendMessage(e, element){
                body: message_body 
             }
         },
-        success: (message) => { createMessageElement(message); },
+        success: (message) => {
+            createMessageElement(message);
+            message.value = "";
+        },
         error: (xhr, status, error) => { console.log(xhr, status, error); }
     });
 }
@@ -23,6 +26,9 @@ function createMessageElement(message){
     var me = document.createElement("blockquote");
     me.id = "message-"+message.id;
     me.classList.add("message");
+    if (message.user.name == receiver) {
+        me.classList.add("self");
+    }
     me.innerHTML = message.body;
     var small = document.createElement("small");
     small.innerHTML = message.user.name + " - "+ message.time_ago;

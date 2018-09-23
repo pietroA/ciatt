@@ -4,8 +4,11 @@
   </div>
   <%= render 'messages/form' %>
 </div>
-
+<input type="hidden" id="sender" name="sender" value="<%= @user.name%>" />
+<input type="hidden" id="receiver" name="receiver" value="<%= current_user.name %>" />
 <script>
+var sender = document.getElementById('sender').value;
+var receiver = document.getElementById('receiver').value;
 $(function(){
   var mb = document.getElementById("messages-box-<%= @chat.id %>");
   mb.scrollTo(0, mb.scrollHeight);
