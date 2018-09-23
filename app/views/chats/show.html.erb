@@ -1,3 +1,11 @@
+  <!-- Nav tabs -->
+  <ul class="nav nav-pills" role="tablist">
+    <li role="presentation" class="active">
+      <a>Ciatt con <%= @user.name %></a>
+    </li>
+    <li role="presentation"><%= link_to '', logout_path, class: "fa fa-sign-out", method: :delete %></a></li>
+  </ul>
+
 <div class="messages-panel" id="messages-panel-<%= @chat.id %>">
   <div class="messages-box" id="messages-box-<%= @chat.id %>">
     <%= render @chat.messages.all %>
@@ -10,6 +18,7 @@
 var sender = document.getElementById('sender').value;
 var receiver = document.getElementById('receiver').value;
 $(function(){
+  document.title = 'Ciat con '+sender;
   var mb = document.getElementById("messages-box-<%= @chat.id %>");
   mb.scrollTo(0, mb.scrollHeight);
 });
