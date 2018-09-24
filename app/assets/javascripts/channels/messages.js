@@ -8,6 +8,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     var textarea = document.getElementById('message-body-'+message.user.id+'-'+message.chat_id);
     if (textarea) {
       textarea.value = "";
+      textarea.rows = 1;
     }
     var md = document.createElement("div");
     md.classList.add("message-div");
