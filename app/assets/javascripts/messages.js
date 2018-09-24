@@ -1,9 +1,9 @@
 function SendMessage(e, element){
     e.preventDefault();
     var chat_id = element.dataset.chat;
-
-    var message = document.getElementById('message-body-'+chat_id);
-    var message_body = message.value
+    var user_id = element.dataset.user;
+    var textarea = document.getElementById('message-body-'+user_id+'-'+chat_id);
+    var message_body = textarea.value;
     $.ajax({
         url: '/api/messages/',
         type: 'POST',
@@ -15,7 +15,7 @@ function SendMessage(e, element){
         },
         success: (message) => {
             //createMessageElement(message);
-            message.value = "";
+            textarea.value = "";
         },
         error: (xhr, status, error) => { console.log(xhr, status, error); }
     });
