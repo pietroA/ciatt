@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
-  before_action :check_login
+  #before_action :check_login
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :check_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if logged_in?
+      @users = User.all
+    end
   end
 
   # GET /users/1
@@ -77,7 +79,7 @@ class UsersController < ApplicationController
     end
     
     def check_user
-        unless current_user.id == @user.id
+        unless logged_in? && current_user.id == @user.id
           redirect_to root_url
         end
     end
