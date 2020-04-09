@@ -22,7 +22,7 @@ class User < ApplicationRecord
 			
    validates :password, 
 			presence: true, 
-			length: {minimum: 8}
+			length: {minimum: 6}
 
   has_many :chat_users, dependent: :destroy
   has_many :messages, dependent: :destroy
