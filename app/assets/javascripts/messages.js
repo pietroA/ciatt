@@ -43,7 +43,13 @@ function checkMessage(e) {
     var textarea = e.target;
     var lines = textarea.value.split(/\r*\n/);
     var rows = lines.length;
-    
+
+    if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById("send-message-button").click();
+    }
     lines.forEach((line) => {
         var length = line.length;
         var spaces = line.match(space);
@@ -51,8 +57,9 @@ function checkMessage(e) {
         if (spaces) {
             length -= (spaces.length / 6);
         }
-        rows += (length / 24 );
+        rows += (length / 50 );
     });
 //    rows  += (textarea.value.length / 24 ) + 1;
     textarea.rows = rows;
 }
+
