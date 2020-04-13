@@ -76,10 +76,10 @@ function ReloadMessages(chat_id) {
             chat_id: chat_id
         },
         success: (new_messages) => { 
-            if(new_messages.length > messages.length){
+            //if(new_messages.length > messages.length){
                 messages = new_messages;
                 SetNewMessagesBtn(chat_id);
-            }
+            //}
          },
         error: (xhr, status, error) => { console.log(xhr, status, error); }
     })
@@ -112,14 +112,15 @@ function SetNewMessagesBtn(chat_id) {
     }
 
     var span = document.createElement('span');
-    span.textContent = 'Ci sono nuovi messaggi';
+    span.classList.add('fa');
+    span.classList.add('fa-comments-o');
     var a = document.createElement("a");
     a.classList.add("new-messages-btn");
     a.id = 'new-messages-btn';
     a.append(span);
     a.href = '';
-    mb = document.getElementById("messages-box-"+chat_id);
-    mb.append(a);
+    mp = document.getElementById("messages-panel-"+chat_id);
+    mp.append(a);
     
     a.addEventListener('click', function (event) {
         event.preventDefault();
