@@ -76,10 +76,10 @@ function ReloadMessages(chat_id) {
             chat_id: chat_id
         },
         success: (new_messages) => { 
-            //if(new_messages.length > messages.length){
+            if(new_messages.length > messages.length){
                 messages = new_messages;
                 SetNewMessagesBtn(chat_id);
-            //}
+            }
          },
         error: (xhr, status, error) => { console.log(xhr, status, error); }
     })
