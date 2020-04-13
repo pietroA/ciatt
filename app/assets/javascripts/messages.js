@@ -29,23 +29,25 @@ function checkMessage(e) {
     var rows = lines.length;
 
     if (event.keyCode === 13) {
-
-        if(textarea.value.length > 0) {
-            event.preventDefault();
+        event.preventDefault();
+        if(textarea.value != '' && textarea.value != "\r" && textarea.value != "\n") {
             document.getElementById("send-message-button").click();
+        } else {
+            textarea.value = '';
         }
+    } else {
+        lines.forEach((line) => {
+            var length = line.length;
+            var spaces = line.match(space);
+    
+            if (spaces) {
+                length -= (spaces.length / 6);
+            }
+            rows += (length / 50 );
+        });
+    //    rows  += (textarea.value.length / 24 ) + 1;
+        textarea.rows = rows;
     }
-    lines.forEach((line) => {
-        var length = line.length;
-        var spaces = line.match(space);
-
-        if (spaces) {
-            length -= (spaces.length / 6);
-        }
-        rows += (length / 50 );
-    });
-//    rows  += (textarea.value.length / 24 ) + 1;
-    textarea.rows = rows;
 }
 
 function GetMessages(chat_id) {
