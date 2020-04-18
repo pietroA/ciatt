@@ -13,7 +13,7 @@
 
 <div class="messages-panel" id="messages-panel-<%= @chat.id %>">
   <div class="messages-box" id="messages-box-<%= @chat.id %>">
-    <%#= render @chat.messages.all %>
+    <%= render @chat.messages.all %>
   </div>
   <%= render 'messages/form' %>
 </div>
@@ -22,12 +22,14 @@
 <script>
 var sender = document.getElementById('sender').value;
 var receiver = document.getElementById('receiver').value;
-var messages = [];
+var messages =  "<%= @chat.messages.all.as_json%>";
 
 $(function(){
   document.title = 'Ciat con '+sender;
-  document.getElementById("messages-box-<%= @chat.id %>").innerHtml = '';
-  GetMessages(<%= @chat.id %>);
-  setInterval(ReloadMessages, 60000, <%= @chat.id %>);
+  var mb = document.getElementById("messages-box-<%= @chat.id %>");
+  mb.scrollTo(0, mb.scrollHeight);
+//  document.getElementById("messages-box-<%= @chat.id %>").innerHtml = '';
+//  GetMessages(<%= @chat.id %>);
+  setInterval(ReloadMessages, 30000, <%= @chat.id %>);
 });
 </script>

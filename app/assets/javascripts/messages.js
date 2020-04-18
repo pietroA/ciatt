@@ -78,15 +78,22 @@ function ReloadMessages(chat_id) {
             chat_id: chat_id
         },
         success: (new_messages) => { 
-            if(new_messages.length > messages.length){
-                messages = new_messages;
-                SetNewMessagesBtn(chat_id);
-            }
+            new_messages.forEach((message) => {
+                if(messages.includes(messages)){
+                    UpdateTimeMessage(message);
+                } else {
+                    renderMessage(message);
+                    messages.push(message);
+                }
+            });
+
+            // if(new_messages.length > messages.length){
+            //     SetNewMessagesBtn(chat_id);
+            // }
          },
         error: (xhr, status, error) => { console.log(xhr, status, error); }
     })
 }
-
 
 
 function renderMessage(message) {
@@ -100,6 +107,7 @@ function renderMessage(message) {
     }
     me.innerHTML = message.body;
     var small = document.createElement("small");
+    small.id = 'time-ago-'+message.id;
     small.innerHTML = message.user.name + " - "+ message.time_ago;
     me.append(small);
     md.append(me);
@@ -134,8 +142,17 @@ function SetNewMessagesBtn(chat_id) {
 
 function LoadMessagesOnPage(chat_id) {
     var mb = document.getElementById("messages-box-"+chat_id);
-    mb.innerHTML = '';
-    messages.forEach((message) => renderMessage(message));
+//    mb.innerHTML = '';
+    messages.forEach((message) => {
+        if(!messages.includes(message)){
+            renderMessage(message);
+            messages.push(message);
+        }
+    });
     mb.scrollTo(0, mb.scrollHeight);
 
+}
+function UpdateTimeMessage(message) {
+    var small = document.getElementById('time-ago-'+message.id);
+    small.innerHTML = message.user.name + " - "+ message.time_ago;
 }
