@@ -25,7 +25,6 @@ var receiver = document.getElementById('receiver').value;
 var messages =  [];
 
 $(function(){
-  console.log(messages);
   document.title = 'Ciat con '+sender;
   var mb = document.getElementById("messages-box-<%= @chat.id %>");
   mb.scrollTo(0, mb.scrollHeight);

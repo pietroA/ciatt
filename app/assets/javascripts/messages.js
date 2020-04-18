@@ -60,7 +60,6 @@ function GetMessages(chat_id) {
         success: (new_messages) => { 
             if(new_messages.length > messages.length){
                 messages = new_messages;
-                console.log(messages);
             }
          },
         error: (xhr, status, error) => { console.log(xhr, status, error); }
@@ -76,12 +75,7 @@ function ReloadMessages(chat_id) {
         },
         success: (new_messages) => { 
             new_messages.forEach((message) => {
-                if(messages.includes(messages)){
-                    UpdateTimeMessage(message);
-                } else {
-                    renderMessage(message);
-                    messages.push(message);
-                }
+                UpdateTimeMessage(message);
             });
 
             // if(new_messages.length > messages.length){
@@ -151,5 +145,9 @@ function LoadMessagesOnPage(chat_id) {
 }
 function UpdateTimeMessage(message) {
     var small = document.getElementById('time-ago-'+message.id);
-    small.innerHTML = message.user.name + " - "+ message.time_ago;
+    if(small) {
+        small.innerHTML = message.user.name + " - "+ message.time_ago;
+    } else {
+        renderMessage(message);
+    }
 }
