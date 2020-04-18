@@ -60,10 +60,7 @@ function GetMessages(chat_id) {
         success: (new_messages) => { 
             if(new_messages.length > messages.length){
                 messages = new_messages;
-                LoadMessagesOnPage(chat_id);
-                // messages.forEach((message) => renderMessage(message));
-                // var mb = document.getElementById("messages-box-"+chat_id);
-                // mb.scrollTo(0, mb.scrollHeight);
+                console.log(messages);
             }
          },
         error: (xhr, status, error) => { console.log(xhr, status, error); }

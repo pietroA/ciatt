@@ -22,14 +22,15 @@
 <script>
 var sender = document.getElementById('sender').value;
 var receiver = document.getElementById('receiver').value;
-var messages =  "<%= @chat.messages.all.as_json%>";
+var messages =  [];
 
 $(function(){
+  console.log(messages);
   document.title = 'Ciat con '+sender;
   var mb = document.getElementById("messages-box-<%= @chat.id %>");
   mb.scrollTo(0, mb.scrollHeight);
 //  document.getElementById("messages-box-<%= @chat.id %>").innerHtml = '';
-//  GetMessages(<%= @chat.id %>);
+  GetMessages(<%= @chat.id %>);
   setInterval(ReloadMessages, 30000, <%= @chat.id %>);
 });
 </script>
