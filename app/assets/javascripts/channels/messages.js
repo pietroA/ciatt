@@ -15,7 +15,9 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       messages.push(message);
     }
     mb = document.getElementById("messages-box-"+message.chat_id);
-    mb.scrollTo(0, mb.scrollHeight);
+    if(mb) {
+      mb.scrollTo(0, mb.scrollHeight);
+    }
     return true;
   }
 
