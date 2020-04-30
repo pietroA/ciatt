@@ -5,9 +5,11 @@
       <a href="">Ciatt con <%= @user.name %></a>
     </li>
     <li role="presentation">
-      <a href="<%= root_url %>"><i class="fa fa-home"></i></a>
+      <a href="<%= root_url %>" onclick="clearInterval(messagesReloading);" ><i class="fa fa-home"></i></a>
     </li>
-    <li role="presentation"><%= link_to '', logout_path, class: "fa fa-sign-out", method: :delete %></a></li>
+    <li role="presentation">
+    <a class="fa fa-sign-out"  rel="nofollow" data-method="delete" href="/logout" onclick="clearInterval(messagesReloading);" ></a>
+    </li>
   </ul>
 </nav>
 
@@ -23,6 +25,7 @@
 var sender = document.getElementById('sender').value;
 var receiver = document.getElementById('receiver').value;
 var messages =  [];
+var messagesReloading;
 
 $(function(){
   document.title = 'Ciat con '+sender;
@@ -30,6 +33,6 @@ $(function(){
   mb.scrollTo(0, mb.scrollHeight);
 //  document.getElementById("messages-box-<%= @chat.id %>").innerHtml = '';
   GetMessages(<%= @chat.id %>);
-  setInterval(ReloadMessages, 30000, <%= @chat.id %>);
+  messagesReloading = setInterval(ReloadMessages, 30000, <%= @chat.id %>);
 });
 </script>
