@@ -2,7 +2,7 @@
 <nav>
   <ul class="menu-bar" role="tablist">
     <li role="presentation" class="active">
-      <a href="">Ciatt con <%= @user.name %></a>
+      <a href="" id="logon-<%=@user.name%>" class="button" >Ciatt con <%= @user.name %></a>
     </li>
     <li role="presentation">
       <a href="<%= root_url %>" onclick="ClearInterval(messagesReloading);" ><i class="fa fa-home"></i></a>
@@ -30,7 +30,8 @@ $(function(){
   document.title = 'Ciat con '+sender;
   var mb = document.getElementById("messages-box-<%= @chat.id %>");
   mb.scrollTo(0, mb.scrollHeight);
-//  document.getElementById("messages-box-<%= @chat.id %>").innerHtml = '';
+  SetUserOnlineStatus(<%=@user.id%>);
+  setUserOnlineStatus = setInterval(SetUserOnlineStatus, 15000, <%=@user.id%>);
   GetMessages(<%= @chat.id %>);
   messagesReloading = setInterval(ReloadMessages, 30000, <%= @chat.id %>);
 });

@@ -156,8 +156,11 @@ function UpdateTimeMessage(message) {
         renderMessage(message);
     }
 }
-function ClearInterval(interval) {
-    if(interval){
-        clearInterval(interval);
+function ClearInterval() {
+    if(messagesReloading){
+        clearInterval(messagesReloading);
+    }
+    if(setUserOnlineStatus){
+        clearInterval(setUserOnlineStatus);
     }
 }

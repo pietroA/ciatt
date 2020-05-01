@@ -26,5 +26,14 @@ class User < ApplicationRecord
 
   has_many :chat_users, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_one :online_status, dependent: :destroy
+
+  def to_json
+    self.as_json(:except => [:password_digest])
+  end
+
+  def as_json(options = {})
+  	super(options.merge(include: [ :online_status]))
+  end
 
 end

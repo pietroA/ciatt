@@ -4,11 +4,11 @@ class SessionsController < ApplicationController
 	
 	def create
 		@user = User.find_by(name: params[:session][:name])
-		p @user
 		unless @user == nil
 			if @user.authenticate(params[:session][:password])
 				login @user
 				flash[:success] = "Bentornato, #{@user.name}?"
+				send_user_status true
 				user_message "#{@user.name} è di nuovo online"
 				redirect_to root_url
 			else
@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
 	end
 	
 	def destroy
+		send_user_status false
 		user_message "#{current_user.name} è offline"
 		log_out
 		redirect_to root_url
@@ -40,6 +41,21 @@ class SessionsController < ApplicationController
 					message: message.as_json
 			end
 		end
-	  end
-  
+	end
+
+	def send_user_status user_status 
+
+		unless current_user.online_status
+            current_user.online_status = OnlineStatus.find_by(user_id: current_user.id)
+			unless current_user.online_status				
+                current_user.online_status = OnlineStatus.create!(user_id: current_user.id, online: user_status)
+            end
+		end
+		if current_user.online_status.online != user_status
+			current_user.online_status.update_attributes(online: user_status)
+		end
+		
+		ActionCable.server.broadcast 'user_status',
+				user: current_user
+	end
 end

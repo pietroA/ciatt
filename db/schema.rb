@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180919002202) do
+ActiveRecord::Schema.define(version: 20200501141949) do
 
   create_table "chat_users", force: :cascade do |t|
     t.integer "chat_id"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20180919002202) do
     t.datetime "updated_at", null: false
     t.index ["chat_id"], name: "index_messages_on_chat_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "online_statuses", force: :cascade do |t|
+    t.integer "user_id"
+    t.boolean "online"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_online_statuses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
