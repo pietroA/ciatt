@@ -8,7 +8,7 @@ end
 
 gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
